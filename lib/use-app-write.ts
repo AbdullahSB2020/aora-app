@@ -14,7 +14,6 @@ const useAppwriteHook = (fn: useAppwriteHookType) => {
         try {
             const data = await fn();
             setData(data);
-            console.log(JSON.stringify(data, null, 2))
 
         } catch (error) {
             Alert.alert("Error", "An error occurred while fetching data")
@@ -28,12 +27,12 @@ const useAppwriteHook = (fn: useAppwriteHookType) => {
         fetchData();
     }, []);
 
-    const refresh = () => fetchData();
+    const refetch = () => fetchData();
 
     return {
         data,
         loading,
-        refresh,
+        refetch,
     }
 }
 

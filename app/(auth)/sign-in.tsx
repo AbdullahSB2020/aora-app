@@ -33,7 +33,6 @@ const SignIn = () => {
         form.email,
         form.password,
       );
-      console.log("🚀 ~ submit ~ createdUser:", createdUser)
       
       setIsLoggedIn(true);
       setUser(createdUser);
@@ -49,7 +48,6 @@ const SignIn = () => {
       Alert.alert("Error", "An error occurred while logging the user in")
     } finally {
       setIsSubmitting(false)
-      console.log("Sign in complete")
     }
   }
 

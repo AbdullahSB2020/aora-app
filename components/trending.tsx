@@ -44,13 +44,11 @@ const TrendingItem = ({ activeItem, item }: TrendingItemProps) => {
         useNativeControls
         shouldPlay
         onPlaybackStatusUpdate={(status) => {
-          console.log(JSON.stringify(status, null, 2))
           // if(status.didJustFinish){
             setPlay(false)
           // }
         }}
         onError={(error) => {
-          console.log(JSON.stringify(error, null, 2))
         }}
         className='w-52 h-72 rounded-[35px] my-5 bg-white/10'
       />
@@ -92,7 +90,6 @@ const Trending = ({posts}: TrendingProps) => {
   const [activeItem, setActiveItem] = useState(posts[1])
   const viewableItemsChanged = ({viewableItems}:{viewableItems: any}) => {
     if(viewableItems.length > 0){
-      // console.log(JSON.stringify(viewableItems, null, 2))
       setActiveItem(viewableItems[0].key)
     }
   }

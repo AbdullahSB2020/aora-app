@@ -62,13 +62,11 @@ const VideoCard = ({
         useNativeControls
         shouldPlay
         onPlaybackStatusUpdate={(status) => {
-            console.log(JSON.stringify(status, null, 2))
             // if(status.didJustFinish){
             setPlay(false)
             // }
         }}
         onError={(error) => {
-            console.log("Video Error:",JSON.stringify(error, null, 2))
         }}
         className='w-full h-60 rounded-lg mt-3 bg-white/10'
         />

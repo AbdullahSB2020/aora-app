@@ -53,7 +53,6 @@ const SignUp = () => {
       Alert.alert("Error", "An error occurred while creating user")
     } finally {
       setIsSubmitting(false)
-      console.log("finished creating user")
     }
   }
   

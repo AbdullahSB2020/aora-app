@@ -34,10 +34,6 @@ const createUser = async (email:string, password:string, username:string) => {
 
         // Combine username and random string to create user ID
         const userId = `${username.replace(/[^a-zA-Z0-9.-_]/g, "").toLowerCase()}_${randomString}`
-
-        console.log({
-            userId,
-        })
         const createdAccount = await account.create(
             userId,
             email,
@@ -72,11 +68,12 @@ const createUser = async (email:string, password:string, username:string) => {
 
 const signIn = async (email:string, password:string) => {
     try{
+        email = email.trim()
+        password = password.trim()
         const session = await account.createEmailPasswordSession(email, password);
         if(session){
             account
         }
-        console.log(session);
         return session;
     } catch(error){
         throw error;
@@ -132,6 +129,32 @@ const getLatestVideos = async () => {
     } catch (error) {
         throw error;
     }
+}
+
+const searchVideos = async (query:string) => {
+    try {
+        const videos = await databases.listDocuments(
+            config.databaseId,
+            config.videosCollectionId,
+            [
+                Query.search('title', query)
+            ],
+        );
+
+        return videos.documents;
+    } catch (error) {
+        console.log("🚀 ~ searchVideos ~ error:", error)
+        throw error;
+    }
+}
+
+const logUserOut = async () => {
+    try {
+        await account.deleteSession("current");
+        return;      
+    } catch (error) {
+        throw error;
+    }
 
 }
 
@@ -142,4 +165,6 @@ export {
     getLoggedInUser,
     getVideos,
     getLatestVideos,
+    logUserOut,
+    searchVideos,
 }
