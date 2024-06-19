@@ -86,7 +86,6 @@ const signIn = async (email:string, password:string) => {
 const getLoggedInUser = async () => {
     try {
         const currentAccount = await account.get();
-        console.log("🚀 ~ getLoggedInUser ~ currentAccount:", currentAccount)
         
         if( !currentAccount ) throw new Error("User not found");
 
@@ -105,9 +104,24 @@ const getLoggedInUser = async () => {
     }
 }
 
+const getVideos = async () => {
+    try {
+        const videos = await databases.listDocuments(
+            config.databaseId,
+            config.videosCollectionId,
+        );
+
+        return videos.documents;
+    } catch (error) {
+        throw error;
+    }
+
+}
+
 export {
     config,
     createUser,
     signIn,
     getLoggedInUser,
+    getVideos,
 }
