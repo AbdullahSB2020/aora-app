@@ -115,6 +115,23 @@ const getVideos = async () => {
     } catch (error) {
         throw error;
     }
+}
+
+const getLatestVideos = async () => {
+    try {
+        const videos = await databases.listDocuments(
+            config.databaseId,
+            config.videosCollectionId,
+            [
+                Query.orderDesc('$createdAt'),
+                Query.limit(7),
+            ],
+        );
+
+        return videos.documents;
+    } catch (error) {
+        throw error;
+    }
 
 }
 
@@ -124,4 +141,5 @@ export {
     signIn,
     getLoggedInUser,
     getVideos,
+    getLatestVideos,
 }

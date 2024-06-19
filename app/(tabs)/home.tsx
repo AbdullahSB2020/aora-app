@@ -5,16 +5,20 @@ import { images } from '@/constants';
 import SearchInput from '@/components/search-input';
 import Trending from '@/components/trending';
 import EmptyState from '@/components/empty-state';
-import { getVideos } from '@/lib/app-write';
+import { getVideos, getLatestVideos } from '@/lib/app-write';
 import useAppwriteHook from '@/lib/use-app-write';
 import VideoCard from '@/components/video-card';
 
 const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
   const {
-    data : posts,
+    data: posts,
     loading,
   } = useAppwriteHook(getVideos);
+
+  const {
+    data: latestPosts,
+  } = useAppwriteHook(getLatestVideos);
 
   const refetch = async () => {
     setRefreshing(true);
@@ -56,7 +60,7 @@ const Home = () => {
                 Latest Videos  
               </Text>
 
-              <Trending posts={[{id:1}, {id:2}, {id:3}] ?? []}/>
+              <Trending posts={posts ?? []}/>
             </View>
           </View>
         )}
