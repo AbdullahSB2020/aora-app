@@ -10,6 +10,7 @@ type props = {
   color: string;
   focused: boolean;
 };
+
 const TabIcon = ({ icon, name, color, focused }: props) => {
   const styles = `${focused ? "text-" : "text-gray-500"}`;
   return (

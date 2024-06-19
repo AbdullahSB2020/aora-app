@@ -1,3 +1,4 @@
+import GlobalProvider from '@/context/global-provider';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Slot, Stack } from 'expo-router';
@@ -24,7 +25,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     if(error) {
-      console.log(error);
+      console.log("🚀 ~ useEffect ~ error:", error)
       throw error;
     }
 
@@ -39,10 +40,15 @@ export default function RootLayout() {
   }
 
   return (
+    
     <>
-      <Stack>
-        <Stack.Screen name='index' options={{ title: 'Root Layout', headerShown: false }} />
-      </Stack>
+      <GlobalProvider>
+        <Stack>
+          <Stack.Screen name='index' options={{ headerShown: false }} />
+          <Stack.Screen name='(auth)' options={{ headerShown: false, title: "Auth Pages" }} />
+          <Stack.Screen name='(tabs)' options={{ headerShown: false, title: "Tabs Pages" }} />
+        </Stack>
+      </GlobalProvider>
       {/* <Slot /> */}
     </>
   );
