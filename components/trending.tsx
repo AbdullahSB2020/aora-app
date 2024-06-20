@@ -110,7 +110,7 @@ const Trending = ({posts}: TrendingProps) => {
           itemVisiblePercentThreshold: 50
         }}
         contentOffset={{x: 170, y: 0}}
-        showsHorizontalScrollIndicator={true}
+        showsHorizontalScrollIndicator={false}
     />
   )
 }

@@ -21,7 +21,6 @@ const CustomButton = ({
       
       className={`
             bg-secondary-200 rounded-xl min-h-[62px] justify-center items-center
-            flex-row px-4 flex-1
             ${containerStyle}
             ${isLoading ? "bg-opacity-50" : ""}
         `}

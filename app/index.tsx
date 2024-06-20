@@ -65,7 +65,7 @@ const RootLayout = () => {
               onPress={() => router.push('sign-in')}
             />
 
-            <StatusBar backgroundColor='#161622' style='light' />
+            <StatusBar backgroundColor='#161622' style='light' hidden={false} />
 
           </View>
         </ScrollView>

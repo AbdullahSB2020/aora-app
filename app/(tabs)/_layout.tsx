@@ -3,6 +3,7 @@ import React from "react";
 import { Tabs } from "expo-router";
 
 import { icons } from "../../constants";
+import { StatusBar } from "expo-status-bar";
 
 type props = {
   icon: any;
@@ -56,22 +57,6 @@ const TabsLayout = () => {
               <TabIcon
                 icon={icons.home}
                 name="Home"
-                color={color}
-                focused={focused}
-              />
-            ),
-          }}
-        />
-
-        <Tabs.Screen
-          name="bookmark"
-          options={{
-            title: "Bookmark",
-            headerShown: false,
-            tabBarIcon: ({ focused, color }) => (
-              <TabIcon
-                icon={icons.bookmark}
-                name="Bookmark"
                 color={color}
                 focused={focused}
               />
