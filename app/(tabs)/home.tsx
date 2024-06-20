@@ -8,8 +8,10 @@ import EmptyState from '@/components/empty-state';
 import { getVideos, getLatestVideos } from '@/lib/app-write';
 import useAppwriteHook from '@/lib/use-app-write';
 import VideoCard from '@/components/video-card';
+import { useGlobalContext } from '@/context/global-provider';
 
 const Home = () => {
+  const {user} = useGlobalContext();
   const [refreshing, setRefreshing] = useState(false);
   const {
     data: posts,
@@ -42,7 +44,7 @@ const Home = () => {
             <View className='justify-between items-start flex-row mb-6'>
               <View>
                 <Text className='font-pmedium text-sm text-gray-100'>Welcome Back</Text>
-                <Text className='text-2xl font-psemibold text-white'>Abohdy</Text>
+                <Text className='text-2xl font-psemibold text-white'>{user.username}</Text>
               </View>
               <View>
                 <Image

@@ -148,6 +148,22 @@ const searchVideos = async (query:string) => {
     }
 }
 
+const getUserVideos = async (userId: string) => {
+    try {
+        const videos = await databases.listDocuments(
+            config.databaseId,
+            config.videosCollectionId,
+            [
+                Query.equal("creators", userId)
+            ]
+        );
+
+        return videos.documents;
+    } catch (error) {
+        throw error;
+    }
+}
+
 const logUserOut = async () => {
     try {
         await account.deleteSession("current");
@@ -167,4 +183,5 @@ export {
     getLatestVideos,
     logUserOut,
     searchVideos,
+    getUserVideos,
 }
