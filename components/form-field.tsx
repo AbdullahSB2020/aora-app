@@ -9,6 +9,7 @@ export type FormFieldProps = {
     otherStyles?: string;
     keyboardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad';
     placeholder?: string;
+    textStyles?: string;
 }
 
 const FormField = ({
@@ -17,13 +18,19 @@ const FormField = ({
   handleTextChange,
   otherStyles,
   keyboardType,
-  placeholder
+  placeholder,
+  textStyles,
 }: FormFieldProps) => {
     const [showPassword, setShowPassword] = useState(false);
 
   return (
     <View className={`space-y-2 ${otherStyles}`}>
-        <Text className="text-base text-gray-100 font-pmedium">
+        <Text 
+            className={`
+                text-sm text-gray-100 font-pmedium
+                ${textStyles}
+            `}
+        >
             {title}
         </Text>
 

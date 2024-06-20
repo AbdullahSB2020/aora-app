@@ -15,6 +15,7 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
   const {
     data: posts,
+    refetch: refetchPosts,
     loading,
   } = useAppwriteHook(getVideos);
 
@@ -24,8 +25,7 @@ const Home = () => {
 
   const refetch = async () => {
     setRefreshing(true);
-    // fetch data
-    console.log('Fetching data...')
+    refetchPosts();
     setRefreshing(false);
   }
 
