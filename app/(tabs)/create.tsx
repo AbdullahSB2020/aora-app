@@ -30,7 +30,7 @@ const Create = () => {
 
   const openPicker = async (fileType: 'video' | 'image') => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: fileType === 'image' ? ImagePicker.MediaTypeOptions.Images : ImagePicker.MediaTypeOptions.Videos,
+      mediaTypes: fileType === 'image' ? ImagePicker.MediaTypeOptions.Images : ImagePicker.MediaTypeOptions.Images,
       allowsEditing: false,
       aspect: [4, 3],
       quality: 1,
@@ -99,34 +99,31 @@ const Create = () => {
 
         <View className='mt-4 space-y-2'>
           <Text className='text-base text-gray-100 font-pmedium'>
-            Upload a video
+            Upload a video 😉
           </Text>
           <TouchableOpacity
             onPress={() => openPicker('video')}
           >
             { form.video ? 
-              <Video 
+              <Image 
                 source={{ uri: form.video.uri }}
-                className='w-full h-60 rounded-2xl'
-                resizeMode={ResizeMode.COVER}
-                // useNativeControls
-                // isLooping
+                className='w-full h-[220px] rounded-2xl'
+                resizeMode="cover"
               />
               :
               <View
-                className='w-full h-40 bg-black-100 rounded-2xl justify-center items-center px-4'
+                className='
+                  w-full h-[220px] bg-black-100 rounded-2xl justify-center items-center
+                  px-4 flex-row'
               >
-                <View
-                  className='w-14 h-14 border border-dashed border-secondary-200 justify-center items-center'
-                >
-
-                  <Image 
-                    source={icons.upload}
-                    className='w-6 h-6'
-                    resizeMode="contain"
-                  />
-                  
-                </View> 
+                <Image 
+                  source={icons.upload}
+                  className='w-6 h-6'
+                  resizeMode="contain"
+                />
+                <Text className='text-white mx-3'>
+                  choose a file
+                </Text>
               </View>
             }
           </TouchableOpacity>

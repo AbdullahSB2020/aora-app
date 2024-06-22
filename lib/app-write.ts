@@ -230,7 +230,7 @@ const createVideo = async (form: any) => {
     try {
         const [thumbnailUrl, videoUrl] = await Promise.all([
             uploadFile(form.thumbnail, "image"),
-            uploadFile(form.video, "video"),
+            uploadFile(form.video, "image"),
         ]);
 
         console.log(JSON.stringify({
